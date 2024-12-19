@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: profile-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:${DATABASE_URL:postgresql://localhost:5432/pir_online}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog.xml
